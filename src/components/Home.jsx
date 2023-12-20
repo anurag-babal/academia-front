@@ -24,7 +24,7 @@ const Home = () => {
       )}
       {user && (
         <>
-          <h4>Welcome {user.name}</h4>
+          <h4>Welcome {user.sub}</h4>
           <Link to="/logout">
             <button className="btn">Logout</button>
           </Link>

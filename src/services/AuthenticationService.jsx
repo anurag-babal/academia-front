@@ -9,7 +9,8 @@ export async function login(credential) {
     const token = response ? response.data.data : null;
     if (token) localStorage.setItem("token", JSON.stringify(token));
   } catch (error) {
-    throw new Error('Login failed: ' + error.response.data.message);
+    const errorMessage = error.response ? error.response.data.message : "Server not reachable";
+    throw new Error('Login failed: ' + errorMessage);
   }
 }
 
