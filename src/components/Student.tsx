@@ -1,10 +1,17 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { User } from "../models/User";
+import StudentModel from "../models/StudentModel";
 
-export default function Students(props) {
+interface StudentProps {
+  user: User;
+  onError: Function;
+}
+
+export const Student: FC<StudentProps> = (props) => {
   const { courseId } = useParams();
-  const [students, setStudents] = useState([]);
+  const [students, setStudents] = useState<StudentModel[]>([]);
   const { onError, user } = props;
 
   async function getStudents() {
@@ -22,7 +29,7 @@ export default function Students(props) {
     <div className="container my-5">
       <h1>Students</h1>
       {
-        user.role === "FACULTY" ? (
+        user.roles.includes("FACULTY") ? (
           students.length == 0 ? (
             <h3>No Student registered for this course</h3>
           ) : (

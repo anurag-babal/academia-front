@@ -8,15 +8,15 @@ const Signup = () => {
   const [loading, setLoading] = useState(false);
   const [successful, setSuccessful] = useState(false);
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
-    const roles = [];
+    const roles: string[] = [];
     const data = { username, password, roles};
     try {
       const user = await register(data);
       setMessage(user.username);
       setSuccessful(true);
-    } catch (error) {
+    } catch (error: any) {
       setMessage(error.message);
       setSuccessful(false);
     } finally {

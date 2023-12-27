@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { getCurrentUser } from "../services/AuthenticationService";
-import NavBar from "./NavBar";
 import { Link } from "react-router-dom";
+import { User } from "../models/User";
+import { getCurrentUser } from "../services/AuthenticationService";
 
 const Home = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<User | undefined>();
 
   useEffect(() => {
     setUser(getCurrentUser());

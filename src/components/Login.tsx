@@ -9,17 +9,7 @@ export default function Login() {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
-  const onChangeUsername = (e) => {
-    const username = e.target.value;
-    setUsername(username);
-  };
-
-  const onChangePassword = (e) => {
-    const password = e.target.value;
-    setPassword(password);
-  };
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     setMessage("");
@@ -29,7 +19,7 @@ export default function Login() {
     try {
       await login(credential);
       navigate("/");
-    } catch (error) {
+    } catch (error: any) {
       setMessage(error.message);
     } finally {
       setLoading(false);
@@ -50,14 +40,14 @@ export default function Login() {
               <div className='input-group mb-3'>
                 <input
                   type='text' className='form-control mt-4' placeholder='Username' value={username}
-                  onChange={onChangeUsername} id='username' required
+                  onChange={(e) => setUsername(e.target.value)} id='username' required
                 />
               </div>
 
               <div className='input-group mb-3'>
                 <input
                   type='password' className='form-control' placeholder='Password' value={password}
-                  onChange={onChangePassword} id='password' required
+                  onChange={(e) => setPassword(e.target.value)} id='password' required
                 />
               </div>
 
