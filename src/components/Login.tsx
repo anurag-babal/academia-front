@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { login } from "../services/AuthenticationService";
 import { useNavigate } from "react-router-dom";
+import { Alert } from "./Alert";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -60,11 +61,12 @@ export default function Login() {
               </div>
 
               {message && (
-                <div className="form-group">
-                  <div className="alert alert-danger" role="alert">
-                    {message}
-                  </div>
-                </div>
+                // <div className="form-group">
+                //   <div className="alert alert-danger" role="alert">
+                //     {message}
+                //   </div>
+                // </div>
+                Alert(message)
               )}
             </form>
           </div>
